@@ -1,7 +1,7 @@
 module global
       implicit none
 
-      integer(kind =4) :: var_num, lim_num
+      integer(kind =4) :: var_num, lim_num, s_num
       real(kind =8),dimension(:,:),allocatable :: simplex_table
       real(kind =8), dimension(:,:),allocatable :: var_tab
       real(kind=8) , dimension(:),allocatable :: func_tab 
@@ -11,6 +11,8 @@ module global
       character(len=2), dimension(:),allocatable :: sig_tab
       integer(kind=4) :: i 
       integer(kind=4) :: j
+      integer(kind=4) :: x_tab, y_tab
+
 end module global 
 
 
@@ -19,8 +21,8 @@ use global
 
       implicit none
 
-      
-      
+      s_num =0
+ 
       write(*,*) 'Co robimy: '
       read(*,*) mm
       write(*,*) 'Liczba zmiennych: '
@@ -29,7 +31,8 @@ use global
       write(*,*) 'Liczba ograniczen: '
       read(*,*) lim_num
       
-      
+      x_tab=4+var_num+s_num
+      y_tab=lim_num      
       
       allocate(func_tab(0 : var_num))
       allocate(s_tab(0 : lim_num-1))
@@ -50,8 +53,18 @@ use global
       call preForm
       call mark_s
 
+      i=0
+      zlicz_s: do
+      if(s_tab(i) .eq. 1) s_num = s_num +1
+      
+      i=i+1
+      if(i .eq. lim_num) exit
+      end do zlicz_s
+      
 
-
+      allocate(simplex_table(0:y_tab,0:x_tab))
+           call print_table
+ 
 stop
 
      contains
@@ -89,6 +102,21 @@ stop
             
             
             end subroutine mark_s
+            
+            subroutine print_table
+                  use global
+                  implicit none
+       
+                   do, i=0,y_tab
+                         do,j=0,x_tab
+                         write(*,"(E10.3)",advance="no") simplex_table(i,j)
+              
+                         end do
+                         write(*,*) ''
+             
+                   end do 
+                            
+            end subroutine
             
             
 ! !       
