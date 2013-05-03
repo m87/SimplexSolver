@@ -14,7 +14,7 @@ use global
       write(*,*) 'Liczba ograniczen: '
       read(*,*) lim_num
       
-      allocate(base(0:lim_num))
+      call allocate
 ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! 
       do,i=0,lim_num
       base(i) = '---'
@@ -23,15 +23,13 @@ use global
    
    
       
-      allocate(func_tab(0 : var_num))
-      allocate(s_tab(0 : lim_num-1))
-      
+
       
       write(*,*) 'Podaj funkcje '
       read(*,*) (func_tab(i),i=0,var_num)
       write(*,*) 'Podaj ograniczenia '
    
-      allocate(lim_tab(0 : lim_num-1, 0:var_num+2))
+      
       
       lim_loop: do,i=0,lim_num-1
       read(*,*) (lim_tab(i,j),j=0,var_num+2)
