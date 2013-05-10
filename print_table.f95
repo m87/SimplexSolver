@@ -28,8 +28,11 @@ subroutine print_table
                          write(*,"(i10, a)",advance="no") i+1, ' |'
                          write(*,"(a10, a)",advance="no") base(i), ' |'
                          do,j=2,x_tab
+                         if ((j .eq. 2) .and. (i .eq. y_tab) ) then
+							write(*,"(a10, a)",advance="no") '---', ' |'
+						else
                          write(*,"(E10.3, a)",advance="no") simplex_table(i,j), ' |'
-              
+						end if
                          end do
                          write(*,*) ''
                          do,j=0,x_tab

@@ -1,5 +1,6 @@
 subroutine init
       use global
+      implicit none
       s_num =0
       ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! 
       do,i=0,lim_num
