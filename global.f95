@@ -8,7 +8,7 @@ module global
       real(kind=8), dimension(:,:),allocatable :: lim_tab
       integer(kind=1) ,dimension(:), allocatable :: s_tab
       character(len =3) :: mm
-      character(len=3), dimension(:),allocatable :: base
+      character(len=5), dimension(:),allocatable :: base
       integer(kind=4) :: i 
       integer(kind=4) :: j
       integer(kind=4) :: x_tab, y_tab

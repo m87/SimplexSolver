@@ -4,7 +4,7 @@
                   if(mm .eq. 'min') func_tab=-func_tab
                   
                   do, i=0,lim_num
-                  if (lim_tab(i,var_num+2) .lt. 0) lim_tab(i,:)=-lim_tab(i,:) 
+                  if (lim_tab(i,var_num+1) .lt. 0) lim_tab(i,:)=-lim_tab(i,:) 
             
                   end do       
             end subroutine preForm
@@ -16,7 +16,7 @@
 	        
 	          
                   do,i=0,lim_num
-                  if (lim_tab(i,var_num+1) .gt. 0) then
+                  if (lim_tab(i,var_num) .gt. 0) then
                   s_tab(i)=1
                   else
                   s_tab(i)=0
@@ -40,5 +40,21 @@
                        simplex_table(i,j) = 0.0
                        end do
                  end do
-            
+                 do,i=0,lim_num-1
+					do,j=0, var_num-1
+					simplex_table(i,j+3) = lim_tab(i,j)
+                 
+					end do
+			
+		
+					simplex_table(i,x_tab) = lim_tab(i,var_num+1)
+					simplex_table(i,var_num+3+i)=1
+					base(i)='s' 
+				 end do
+			
+				 do,i=0,var_num-1
+					simplex_table(lim_num,i+3) = -func_tab(i)
+					
+				end do
+			
             end subroutine init_table

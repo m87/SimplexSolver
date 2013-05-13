@@ -14,7 +14,9 @@ subroutine print_table
                    end do
                    do,i=1,s_num
                    
-                    write(*,"(a8,i2,a)",advance="no") 's',i,' |'
+                  !  write(*,"(a8,i2,a)",advance="no") 's',i,' |'
+                     call ftostr(simplex_table(3,0),base(0))
+                     write(*,"(F10.3)",advance="no") 
                    end do
                    
                     write(*,"(a10,a)") 'RHS',' |'
@@ -28,8 +30,11 @@ subroutine print_table
                          write(*,"(i10, a)",advance="no") i+1, ' |'
                          write(*,"(a10, a)",advance="no") base(i), ' |'
                          do,j=2,x_tab
-                         write(*,"(E10.3, a)",advance="no") simplex_table(i,j), ' |'
-              
+                         if ((j .eq. 2) .and. (i .eq. y_tab) ) then
+							write(*,"(a10, a)",advance="no") '---', ' |'
+						else
+                         write(*,"(F10.3, a)",advance="no") simplex_table(i,j), ' |'
+						end if
                          end do
                          write(*,*) ''
                          do,j=0,x_tab
