@@ -1,7 +1,8 @@
 program simplexsolver
 use global
       implicit none
-   
+      
+      condition = .TRUE.
       call io_init
       call allocate     
       call io_func

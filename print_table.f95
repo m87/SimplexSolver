@@ -10,12 +10,15 @@ subroutine print_table
                    write(*,"(3(a10,a))",advance="no") 'i',' |','b',' |','c',' |'
                    do,i=1,var_num
                    
+                   
                     write(*,"(a8,i2,a)",advance="no") 'x',i,' |'
+                    
+                    
                    end do
                    do,i=1,s_num
                    
-                  !  write(*,"(a8,i2,a)",advance="no") 's',i,' |'
-                     call ftostr(simplex_table(3,0),base(0))
+                    write(*,"(a8,i2,a)",advance="no") 's',i,' |'
+                    ! call ftostr(simplex_table(3,0),base(0))
                      write(*,"(F10.3)",advance="no") 
                    end do
                    
@@ -33,11 +36,11 @@ subroutine print_table
                          if ((j .eq. 2) .and. (i .eq. y_tab) ) then
 							write(*,"(a10, a)",advance="no") '---', ' |'
 						else
-<<<<<<< HEAD
+
                          write(*,"(F10.3, a)",advance="no") simplex_table(i,j), ' |'
-=======
-                         write(*,"(E10.3, a)",advance="no") simplex_table(i,j), ' |'
->>>>>>> 96c5209e562cc1963446af7b13331574c912a274
+
+                         !write(*,"(E10.3, a)",advance="no") simplex_table(i,j), ' |'
+
 						end if
                          end do
                          write(*,*) ''
@@ -49,3 +52,4 @@ subroutine print_table
                    end do 
                             
 end subroutine print_table
+

@@ -12,5 +12,8 @@ module global
       integer(kind=4) :: i 
       integer(kind=4) :: j
       integer(kind=4) :: x_tab, y_tab
-
+      real(kind =8) :: a_ij,a_ik,a_lj,sqr_result
+      logical:: condition;
+      
+      
 end module global 
