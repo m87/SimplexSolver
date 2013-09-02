@@ -14,11 +14,12 @@ subroutine io_func
       use global
       implicit none
       write(*,*) 'Podaj funkcje '
+      !formula parser here
       read(*,*) (func_tab(i),i=0,var_num)
       write(*,*) 'Podaj ograniczenia '
    
       
-      
+      !fph
       lim_loop: do,i=0,lim_num-1
       read(*,*) (lim_tab(i,j),j=0,var_num+1)
 
