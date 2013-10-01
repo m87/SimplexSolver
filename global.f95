@@ -7,7 +7,7 @@ module global
       real(kind=8) , dimension(:),allocatable :: func_tab 
       real(kind=8), dimension(:,:),allocatable :: lim_tab
       integer(kind=1) ,dimension(:), allocatable :: s_tab
-      character(len =3) :: mm
+      logical :: mm
       character(len=5), dimension(:),allocatable :: base
       integer(kind=4) :: i 
       integer(kind=4) :: j

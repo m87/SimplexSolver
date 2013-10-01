@@ -1,22 +1,22 @@
 subroutine io_init      
       use global
       implicit none
-      write(*,*) 'Co robimy: '
+     ! write(*,*) 'Co robimy: '
       read(*,*) mm
-      write(*,*) 'Liczba zmiennych: '
+     ! write(*,*) 'Liczba zmiennych: '
       read(*,*) var_num
 
-      write(*,*) 'Liczba ograniczen: '
+      !write(*,*) 'Liczba ograniczen: '
       read(*,*) lim_num
 end subroutine io_init
 
 subroutine io_func
       use global
       implicit none
-      write(*,*) 'Podaj funkcje '
+      !write(*,*) 'Podaj funkcje '
       !formula parser here
       read(*,*) (func_tab(i),i=0,var_num)
-      write(*,*) 'Podaj ograniczenia '
+      !write(*,*) 'Podaj ograniczenia '
    
       
       !fph

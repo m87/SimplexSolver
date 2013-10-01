@@ -1,7 +1,7 @@
             subroutine preForm
 		  use global
                   implicit none
-                  if(mm .eq. 'min') func_tab=-func_tab
+                  if(mm .eqv. .FALSE.) func_tab=-func_tab
                   
                   do, i=0,lim_num
                   if (lim_tab(i,var_num+1) .lt. 0) lim_tab(i,:)=-lim_tab(i,:) 
@@ -53,8 +53,8 @@
 				 end do
 			
 				 do,i=0,var_num-1
-					simplex_table(lim_num,i+3) = -func_tab(i)
+					simplex_table(lim_num,i+3) = func_tab(i)
 					
 				end do
-			
+					
             end subroutine init_table

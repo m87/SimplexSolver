@@ -1,4 +1,4 @@
-subroutine allocate    
+subroutine allocate
       use global
       implicit none
       allocate(base(0:lim_num))
