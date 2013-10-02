@@ -6,6 +6,7 @@ subroutine solve
       !call check()
       !if(condition .eqv. .TRUE.)  exit
       max_w = max_s()
+   
       min_w = min_d(max_w)
       write(*,*) max_w
       write(*,*) min_w 
@@ -33,8 +34,9 @@ function max_s()
       Integer(kind = 4):: local_i, max_s, max_i
       real(kind = 8):: max_local
       max_local = 0.0
+      max_i = -1
       do, local_i=2,x_tab-1
-      if(simplex_table(y_tab,local_i) .gt. max_local) then
+      if(simplex_table(y_tab,local_i) .ge. max_local) then
              max_local = simplex_table(y_tab, local_i) 
              max_i=local_i
       end if 
@@ -50,10 +52,10 @@ function min_d(x)
       integer(kind = 4) :: local_i, min_d, max_i,x
       real(kind=8):: max_local, temp
       max_local = simplex_table(0,x)/simplex_table(y_tab,x)
+      max_i =-1
        do, local_i=0,y_tab-1
 	temp = simplex_table(local_i,x)/simplex_table(y_tab,x)
-        if(temp .le. 0) continue
-	if(((temp .lt. max_local).OR. (max_local .le. 0 )).AND. (temp .gt. 0)) then
+	if(((temp .le. max_local).OR. (max_local .le. 0 )).AND. (temp .gt. 0)) then
               max_local = temp
               max_i=local_i
        end if 
