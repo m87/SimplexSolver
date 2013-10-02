@@ -43,7 +43,7 @@
                  do,i=0,lim_num-1
 					do,j=0, var_num-1
 					simplex_table(i,j+3) = lim_tab(i,j)
-                 
+                                       
 					end do
 			
 		
