@@ -36,7 +36,7 @@ subroutine print_table
                          if ((j .eq. 2) .and. (i .eq. y_tab) ) then
 							write(*,"(a10, a)",advance="no") '---', ' |'
 						else
-
+                         
                          write(*,"(F10.3, a)",advance="no") simplex_table(i,j), ' |'
 
                          !write(*,"(E10.3, a)",advance="no") simplex_table(i,j), ' |'

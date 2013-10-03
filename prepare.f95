@@ -35,7 +35,9 @@
                  use global
                  implicit none
                  allocate(simplex_table(0:y_tab,2:x_tab))
-                 do,i=0,y_tab
+ 
+                 allocate(simplex_table_tmp(0:y_tab,2:x_tab))
+                do,i=0,y_tab
                        do, j=0,x_tab
                        simplex_table(i,j) = 0.0
                        end do

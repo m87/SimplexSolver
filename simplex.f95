@@ -11,7 +11,7 @@ use global
       call init
       call init_table
       call print_table
-      call solve  
+      call solve 
 stop
 
 

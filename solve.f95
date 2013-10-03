@@ -1,24 +1,28 @@
 subroutine solve
       use global
       implicit none
-      Integer(kind=4) :: max_w, max_s,min_d, min_w
+      Integer(kind=4) ::  max_s,min_d
       do
       !call check()
       !if(condition .eqv. .TRUE.)  exit
       max_w = max_s()
    
       min_w = min_d(max_w)
-      write(*,*) max_w
-      write(*,*) min_w 
-!      write(*,*) simplex_table(:,:)    
-      write(*,*) simplex_table(min_w,max_w)
-      write(*,*) base(:) 
+     ! write(*,*) max_w
+     ! write(*,*) min_w 
+      base_val = simplex_table(min_w,max_w)    
+!  write(*,*) simplex_table(0,:)    
+     ! write(*,*) simplex_table(min_w,max_w)
+!      write(*,*) base(:) 
       if(min_w .eq. -1) then
       write(*,*) "Nieograniczone rozwiązanie"
       exit
       end if
+      call cal
+      
+      call print_table
       call check()
-       if(condition .eqv. .TRUE.)  exit
+       if(condition .eqv. .FALSE.)  exit
 
 !!!!BASE REFr   
       end do
@@ -70,9 +74,44 @@ function min_d(x)
 
 end function min_d
 
+subroutine cal()
+      use global
+      implicit none 
+      integer(kind =4 ) :: local_i,local_j,local_k
+      real(kind = 8 ) :: sqr     
+      
+ 
+ 
+      do, local_i=0, y_tab 
+   !       if(local_i .eq. min_w) continue 
+            do, local_j=3, x_tab  
+		 
+!                 write(*,*) simplex_table(local_i, local_j )
+               simplex_table_tmp(local_i,local_j) = sqr(min_w,max_w,local_i,local_j)
+            end do
+      end do
+       do, local_k=3,x_tab 
+                simplex_table_tmp(min_w,local_k) = simplex_table(min_w,local_k)/base_val
+    
+       end do
+                                                                                                                                                                  
+       simplex_table(min_w,max_w) =1.0
+       simplex_table_tmp(min_w,max_w) =1.0  
 
-subroutine ch_base(x,y)
-      integer(kind =4) x,y
+       simplex_table=simplex_table_tmp
+
+end subroutine cal
+
+
+subroutine ch_base
+      use global
+      implicit none
+      integer(kind =4) local_i,local_j
+
+
+      
+
+
 
 
 end subroutine ch_base
