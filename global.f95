@@ -10,7 +10,7 @@ module global
       real(kind=8), dimension(:,:),allocatable :: lim_tab
       integer(kind=1) ,dimension(:), allocatable :: s_tab
       logical :: mm
-      character(len=5), dimension(:),allocatable :: base
+      character(len=6), dimension(:),allocatable :: base
       integer(kind=4) :: i 
       integer(kind=4) :: j
       integer(kind=4) :: x_tab, y_tab, min_w, max_w

@@ -31,7 +31,7 @@ subroutine print_table
                    
                    do, i=0,y_tab
                          write(*,"(i10, a)",advance="no") i+1, ' |'
-                         write(*,"(a10, a)",advance="no") base(i), ' |'
+                         write(*,"(a10, a)",advance="no") base(i) , ' |'
                          do,j=2,x_tab
                          if ((j .eq. 2) .and. (i .eq. y_tab) ) then
 							write(*,"(a10, a)",advance="no") '---', ' |'

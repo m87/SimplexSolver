@@ -19,7 +19,8 @@ subroutine solve
       exit
       end if
       call cal
-      
+    !  write(*,*) var_num
+      call ch_base
       call print_table
       call check()
        if(condition .eqv. .FALSE.)  exit
@@ -89,6 +90,7 @@ subroutine cal()
 !                 write(*,*) simplex_table(local_i, local_j )
                simplex_table_tmp(local_i,local_j) = sqr(min_w,max_w,local_i,local_j)
             end do
+            simplex_table_tmp(local_i,2) = simplex_table(local_i,2)
       end do
        do, local_k=3,x_tab 
                 simplex_table_tmp(min_w,local_k) = simplex_table(min_w,local_k)/base_val
@@ -106,12 +108,21 @@ end subroutine cal
 subroutine ch_base
       use global
       implicit none
-      integer(kind =4) local_i,local_j
-
-
-      
-
-
+      integer(kind =4) :: local_i,local_j
+      character(len = 5) :: no 
+      if(max_w .le. 3+var_num) then
+           
+           call itostr(max_w-2,no)
+           base(min_w) = "x" // no
+           simplex_table(min_w,2) = func_tab(max_w-3)
+      else
+           
+           call itostr(max_w-2-var_num,no)
+          
+           base(min_w) = "s" // no
+           
+           simplex_table(min_w,2) = 0.0
+      end if            
 
 
 end subroutine ch_base
