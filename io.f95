@@ -22,7 +22,6 @@ subroutine io_func
       !fph
       lim_loop: do,i=0,lim_num-1
       read(*,*) (lim_tab(i,j),j=0,var_num+1)
-      write(*,*) lim_tab(i,:)
       end do lim_loop
 
       
