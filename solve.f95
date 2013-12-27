@@ -8,24 +8,17 @@ subroutine solve
       max_w = max_s()
    
       min_w = min_d(max_w)
-     ! write(*,*) max_w
-     ! write(*,*) min_w 
       base_val = simplex_table(min_w,max_w)    
-!  write(*,*) simplex_table(0,:)    
-     ! write(*,*) simplex_table(min_w,max_w)
-!      write(*,*) base(:) 
       if(min_w .eq. -1) then
       write(*,*) "Nieograniczone rozwiązanie"
       exit
       end if
       call cal
-    !  write(*,*) var_num
       call ch_base
       call print_table
       call check()
        if(condition .eqv. .FALSE.)  exit
 
-!!!!BASE REFr   
       end do
 	
 	
@@ -84,10 +77,8 @@ subroutine cal()
  
  
       do, local_i=0, y_tab 
-   !       if(local_i .eq. min_w) continue 
             do, local_j=3, x_tab  
 		 
-!                 write(*,*) simplex_table(local_i, local_j )
                simplex_table_tmp(local_i,local_j) = sqr(min_w,max_w,local_i,local_j)
             end do
             simplex_table_tmp(local_i,2) = simplex_table(local_i,2)
